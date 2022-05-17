@@ -13,7 +13,7 @@ import java.io.IOException;
 *KEYOUT  map阶段输出的Key类型： Text
 *VALUEOUT map阶段输出的Value类型： IntWritable
 */
-public class WordCountMapper extends Mapper<LongWritable, Text,Text, IntWritable> {
+public class  WordCountMapper extends Mapper<LongWritable, Text,Text, IntWritable> {
     private Text outK = new Text();
     private IntWritable outV = new IntWritable(1);
     @Override
