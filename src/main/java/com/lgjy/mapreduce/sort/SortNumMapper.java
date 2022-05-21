@@ -1,28 +1,20 @@
 package com.lgjy.mapreduce.sort;
 
-import org.apache.hadoop.io.LongWritable;
-import org.apache.hadoop.io.NullWritable;
+import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
 import java.io.IOException;
 
-public class SortNumMapper extends Mapper<LongWritable, Text,SortBean, NullWritable> {
-    private SortBean outK = new SortBean();
-
+public class SortNumMapper extends Mapper<Object, Text, IntWritable, IntWritable> {
+    private IntWritable outK = new IntWritable();
+    private IntWritable outV = new IntWritable(1);
 
     @Override
-    protected void map(LongWritable key, Text value, Mapper<LongWritable, Text, SortBean, NullWritable>.Context context) throws IOException, InterruptedException {
+    protected void map(Object key, Text value, Mapper<Object, Text, IntWritable, IntWritable>.Context context) throws IOException, InterruptedException {
         String line = value.toString();
-        String[] split = line.split("\n");
-
-        for(String num : split){
-
-            outK.setNum(Integer.parseInt(num));
-            context.write(outK,NullWritable.get());
-        }
-
-
+        outK.set(Integer.parseInt(line));
+        context.write(outK, outV);
     }
 }
 
