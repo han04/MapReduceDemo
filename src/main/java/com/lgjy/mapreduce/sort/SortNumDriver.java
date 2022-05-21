@@ -20,8 +20,8 @@ public class SortNumDriver {
         job.setMapperClass(SortNumMapper.class);
         job.setReducerClass(SortNumReducer.class);
 
-        job.setMapOutputKeyClass(IntWritable.class);
-        job.setMapOutputValueClass(IntWritable.class);
+//      job.setMapOutputKeyClass(IntWritable.class);
+//      job.setMapOutputValueClass(IntWritable.class);
 
         job.setOutputKeyClass(IntWritable.class);
         job.setOutputValueClass(IntWritable.class);
